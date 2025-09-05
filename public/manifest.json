@@ -1,0 +1,14 @@
+{
+  "name": "Right Guard",
+  "description": "Right Guard is a Base Mini App built with Zara.",
+  "image": "https://dummyimage.com/1200x628/0a0b0d/ffffff.png&text=OG",
+  "external_url": "https://f82f3b6b-3f0f-40e8-ae07-7f1023a44de4.vercel.app",
+  "properties": {
+    "app": {
+      "name": "Right Guard",
+      "description": "Right Guard is a Base Mini App built with Zara.",
+      "url": "https://f82f3b6b-3f0f-40e8-ae07-7f1023a44de4.vercel.app",
+      "icon": "https://0co.to/images/zara-2.png"
+    }
+  }
+}

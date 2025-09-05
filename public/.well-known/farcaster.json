@@ -1,0 +1,30 @@
+{
+  "accountAssociation": {
+    "header": "",
+    "payload": "",
+    "signature": ""
+  },
+  "frame": {
+    "version": "1",
+    "name": "Right Guard",
+    "subtitle": "Built with Zara",
+    "description": "Right Guard is a Base Mini App built with Zara.",
+    "iconUrl": "https://0co.to/images/zara-2.png",
+    "homeUrl": "https://f82f3b6b3f0f40e8ae077f1023a44de4-6sb9.vercel.app",
+    "splashImageUrl": "https://f82f3b6b3f0f40e8ae077f1023a44de4-6sb9.vercel.app/splash.png",
+    "splashBackgroundColor": "#000000",
+    "heroImageUrl": "https://f82f3b6b3f0f40e8ae077f1023a44de4-6sb9.vercel.app/image.png",
+    "tagline": "Right Guard",
+    "screenshotUrls": [
+      "https://f82f3b6b3f0f40e8ae077f1023a44de4-6sb9.vercel.app/screenshot.png",
+      "https://f82f3b6b3f0f40e8ae077f1023a44de4-6sb9.vercel.app/screenshot.png"
+    ],
+    "primaryCategory": "social",
+    "tags": [
+      "base",
+      "miniapp",
+      "onchainkit"
+    ],
+    "webhookUrl": "https://f82f3b6b3f0f40e8ae077f1023a44de4-6sb9.vercel.app/api/webhook"
+  }
+}
