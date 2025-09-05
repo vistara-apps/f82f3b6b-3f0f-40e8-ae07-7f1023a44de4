@@ -2,27 +2,30 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Shield, Settings2, Menu, X } from 'lucide-react';
+import { Shield, Settings2, Menu, X, Crown } from 'lucide-react';
 import { ConnectWallet, Wallet } from '@coinbase/onchainkit/wallet';
 import { Name, Avatar } from '@coinbase/onchainkit/identity';
 import { useMiniKit } from '@coinbase/onchainkit/minikit';
 
 import { RightsCard } from '@/components/RightsCard';
 import { RecordingInterface } from '@/components/RecordingInterface';
+import { PremiumFeatures } from '@/components/PremiumFeatures';
 import { StateSelector } from '@/components/StateSelector';
 import { ScriptButton } from '@/components/ScriptButton';
+import { useApp, useLanguage, useCurrentState } from '@/lib/context';
 import { APP_CONFIG } from '@/lib/constants';
-import { detectStateFromLocation, getCurrentLocation } from '@/lib/utils';
+import { utilityService } from '@/lib/services';
 
-type TabType = 'rights' | 'record' | 'settings';
+type TabType = 'rights' | 'record' | 'premium';
 
 export default function HomePage() {
   const [activeTab, setActiveTab] = useState<TabType>('rights');
-  const [selectedState, setSelectedState] = useState('California');
-  const [language, setLanguage] = useState<'en' | 'es'>('en');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
+  const { state, initializeUser } = useApp();
+  const [language, setLanguage] = useLanguage();
+  const [selectedState, setSelectedState] = useCurrentState();
   const { setFrameReady } = useMiniKit();
 
   useEffect(() => {
@@ -30,9 +33,9 @@ export default function HomePage() {
     setFrameReady();
 
     // Auto-detect location and state
-    getCurrentLocation()
+    utilityService.getCurrentLocation()
       .then((location) => {
-        const detectedState = detectStateFromLocation(location.latitude, location.longitude);
+        const detectedState = utilityService.detectStateFromLocation(location.latitude, location.longitude);
         setSelectedState(detectedState);
       })
       .catch((error) => {
@@ -41,11 +44,12 @@ export default function HomePage() {
       .finally(() => {
         setIsLoading(false);
       });
-  }, [setFrameReady]);
+  }, [setFrameReady, setSelectedState]);
 
   const tabs = [
     { id: 'rights' as TabType, label: 'Rights', icon: Shield },
     { id: 'record' as TabType, label: 'Record', icon: Settings2 },
+    { id: 'premium' as TabType, label: 'Premium', icon: Crown },
   ];
 
   if (isLoading) {
@@ -179,6 +183,10 @@ export default function HomePage() {
 
           {activeTab === 'record' && (
             <RecordingInterface language={language} />
+          )}
+
+          {activeTab === 'premium' && (
+            <PremiumFeatures />
           )}
         </motion.div>
       </main>
