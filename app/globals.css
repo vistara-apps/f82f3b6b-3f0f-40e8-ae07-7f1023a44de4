@@ -12,7 +12,8 @@
   }
   
   body {
-    @apply h-full bg-gradient-to-br from-purple-900 via-blue-900 to-purple-800 text-text-primary;
+    @apply h-full bg-gradient-to-br from-purple-900 via-blue-900 to-purple-800;
+    color: hsl(0 0% 95%);
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
@@ -27,7 +28,8 @@
   }
   
   .btn-secondary {
-    @apply glass-card text-text-primary px-6 py-3 rounded-lg font-medium hover:bg-opacity-20 transition-all duration-200;
+    @apply glass-card px-6 py-3 rounded-lg font-medium hover:bg-opacity-20 transition-all duration-200;
+    color: hsl(0 0% 95%);
   }
   
   .btn-alert {
